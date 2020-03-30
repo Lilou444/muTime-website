@@ -13,7 +13,7 @@ const Index = ({ removeToken, token }) => {
       if (token) {
         try {
           const result = await axios.get(
-            'http://mutime-api.herokuapp.com/users/self',
+            'https://mutime-api.herokuapp.com/users/self',
             { headers: { Authorization: `Bearer ${token}` } },
           );
           setFirstname(result.data.firstname);

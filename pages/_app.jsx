@@ -20,7 +20,7 @@ const App = ({ Component, pageProps }) => {
         if (token) {
           try {
             await axios.post(
-              'http://mutime-api.herokuapp.com/auth/ping',
+              'https://mutime-api.herokuapp.com/auth/ping',
               {},
               { headers: { Authorization: `Bearer ${token}` } },
             );
