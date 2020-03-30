@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginForm = () => {
+const LoginForm = ({ setShowExpirationNotice }) => {
   const classes = useStyles();
 
   const [username, setUsername] = React.useState('');
@@ -50,7 +50,7 @@ const LoginForm = () => {
 
   const handleSuccess = (result) => {
     setAlert('');
-
+    setShowExpirationNotice(false);
     setCookie('token', result.data.token);
   };
 

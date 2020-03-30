@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import axios from 'axios';
 import React from 'react';
 
 const useStyles = makeStyles({
@@ -19,15 +20,15 @@ const useStyles = makeStyles({
   },
 });
 
-const StickyHeadTable = () => {
+const UsersTable = ({ token }) => {
   const columns = [
-    { id: 'firstname', name: 'First name' },
-    { id: 'lastname', name: 'Last name' },
+    { id: 'firstname', name: 'Prénom' },
+    { id: 'lastname', name: 'Nom' },
   ];
 
   const classes = useStyles();
-  const [rows] = React.useState([]);
-  const [loading] = React.useState(true);
+  const [rows, setRows] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -40,6 +41,24 @@ const StickyHeadTable = () => {
     setPage(0);
   };
 
+  React.useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(
+          'https://mutime-api.herokuapp.com/users',
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+
+        setRows(response.data);
+        setLoading(false);
+      } catch (err) {
+        // won't process
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   return loading ? (<CircularProgress />) : (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
@@ -47,9 +66,7 @@ const StickyHeadTable = () => {
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell key={column.id}>
-                  {column.label}
-                </TableCell>
+                <TableCell>{column.name}</TableCell>
               ))}
             </TableRow>
           </TableHead>
@@ -82,4 +99,4 @@ const StickyHeadTable = () => {
   );
 };
 
-export default StickyHeadTable;
+export default UsersTable;

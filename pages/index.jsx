@@ -5,7 +5,7 @@ import React from 'react';
 
 import LoginForm from '../components/LoginForm';
 
-const Index = ({ removeToken, token }) => {
+const Index = ({ removeToken, setShowExpirationNotice, token }) => {
   const [firstname, setFirstname] = React.useState('');
 
   React.useEffect(() => {
@@ -33,7 +33,7 @@ const Index = ({ removeToken, token }) => {
       </Head>
       <center>
         {!token
-          ? <LoginForm />
+          ? <LoginForm setShowExpirationNotice={setShowExpirationNotice} />
           : (
             <>
               <p>

@@ -51,6 +51,7 @@ const App = ({ Component, pageProps }) => {
       <Component
         {...pageProps}
         removeToken={removeToken}
+        setShowExpirationNotice={setShowExpirationNotice}
         token={token}
       />
     </>

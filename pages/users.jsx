@@ -1,15 +1,16 @@
+import Typography from '@material-ui/core/Typography';
 import Head from 'next/head';
 import React from 'react';
 
-import StickyHeadTable from '../components/StickyHeadTable';
+import UsersTable from '../components/UsersTable';
 
-const Users = () => (
+const Users = ({ token }) => (
   <div>
     <Head>
       <title>muTime - Utilisateurs</title>
     </Head>
-    <center><h2>Tableau des utilisateurs</h2></center>
-    <center><StickyHeadTable /></center>
+    <center><Typography variant="h5">Tableau des utilisateurs</Typography></center>
+    <center><UsersTable token={token} /></center>
   </div>
 );
 
