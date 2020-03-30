@@ -1,14 +1,16 @@
+import Head from 'next/head';
 import React from 'react';
 
-import Navbar from '../components/navbar/Navbar';
 import StickyHeadTable from '../components/StickyHeadTable';
 
-const Administration = () => (
+const Users = () => (
   <div>
-    <Navbar />
+    <Head>
+      <title>muTime - Utilisateurs</title>
+    </Head>
     <center><h2>Tableau des utilisateurs</h2></center>
-    <StickyHeadTable />
+    <center><StickyHeadTable /></center>
   </div>
 );
 
-export default Administration;
+export default Users;

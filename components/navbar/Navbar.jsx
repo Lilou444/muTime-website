@@ -8,16 +8,13 @@ import React from 'react';
 
 import Drawer from './DrawerContainer';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
 }));
 
-const DenseAppBar = () => {
+const Navbar = () => {
   const classes = useStyles();
 
   const [drawerIsOpen, setDrawerIsOpen] = React.useState(false);
@@ -29,7 +26,6 @@ const DenseAppBar = () => {
         <Toolbar variant="dense">
           <IconButton
             aria-label="menu"
-            className={classes.menuButton}
             color="inherit"
             edge="start"
             onClick={() => toggleDrawer()}
@@ -46,4 +42,4 @@ const DenseAppBar = () => {
   );
 };
 
-export default DenseAppBar;
+export default Navbar;
